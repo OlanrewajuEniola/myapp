@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Maven'   // Name must match what you configured in Jenkins global tools
+    }
+
+    stages {
+        stage('Clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/OlanrewajuEniola/myapp.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Copy WAR to Tomcat webapps directory
+                sh 'cp target/myapp-1.0-SNAPSHOT.war /opt/tomcat/webapps/myapp.war'
+            }
+        }
+    }
+}
+
