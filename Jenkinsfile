@@ -2,11 +2,12 @@ pipeline {
     agent any
 
     tools {
+	jdk 'JDK17'
         maven 'Maven'   // Name must match what you configured in Jenkins global tools
     }
 
     stages {
-        stage('Clone') {
+        stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/OlanrewajuEniola/myapp.git'
             }
