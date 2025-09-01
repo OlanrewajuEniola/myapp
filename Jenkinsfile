@@ -22,7 +22,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Copy WAR to Tomcat webapps directory
-                sh 'cp target/myapp-1.0-SNAPSHOT.war /opt/tomcat/webapps/myapp.war'
+                sh 'sudo cp target/myapp-1.0-SNAPSHOT.war /opt/tomcat10/webapps/myapp.war'
             }
         }
     }
